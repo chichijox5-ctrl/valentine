@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Theophilia 💖</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff4f9a, #ffb347);
+      font-family: 'Georgia', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 35px;
+      border-radius: 25px;
+      box-shadow: 0 0 35px rgba(0,0,0,0.35);
+      max-width: 520px;
+      animation: float 3s ease-in-out infinite;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2.3em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.15em;
+      line-height: 1.6;
+    }
+
+    button {
+      margin: 12px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      font-size: 1.05em;
+      background: #ff2f7d;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+      position: relative;
+    }
+
+    button:hover {
+      transform: scale(1.07);
+      background: #ff5fa2;
+    }
+
+    #noBtn {
+      background: #ffd1e6;
+      color: #ff2f7d;
+      position: absolute;
+    }
+
+    #finalMessage {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.3em;
+      animation: pop 0.6s ease;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background music -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9e0f9a1b6c.mp3?filename=romantic-piano-112191.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <h1>Theophilia 💖 (Lil Lily 🌸)</h1>
+    <p>
+      Somewhere between your laugh, your kindness, and the way you quietly
+      became my favorite person…
+      my heart signed a contract without consulting my brain 😌✨
+      <br><br>
+      So here I am, brave, smiling, and slightly dramatic when I ask:
+    </p>
+
+    <p style="margin-top:16px; font-size:1.25em;">
+      Will you be my Valentine? 🌹
+    </p>
+
+    <button onclick="yesClicked()">Yes 💘</button>
+    <button id="noBtn" onmouseover="runAway()">No 😐</button>
+
+    <div id="finalMessage">
+      🥹💖 LET’S GOOOOOOO  
+      <br><br>
+      Theophilia, you’re officially my Valentine,
+      my favorite notification, and my soft place to land 🫶✨  
+      <br><br>
+      <a href="https://www.youtube.com/results?search_query=Forever+Jason+Nelson"
+         target="_blank"
+         style="color:#fff; text-decoration:underline;">
+         Tap here for *Forever* by Jason Nelson 🎶💍
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+
+    function yesClicked() {
+      document.getElementById("finalMessage").style.display = "block";
+      spawnHearts();
+    }
+
+    function runAway() {
+      const x = Math.random() * 260 - 130;
+      const y = Math.random() * 160 - 80;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    function spawnHearts() {
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }
+    }
+  </script>
+
+</body>
+</html>
